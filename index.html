@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///Users/courinham4/Downloads/memoria-branca_1.html -->
+<!-- saved from url=(0056)file:///Users/courinham4/Downloads/memoria-branca_3.html -->
 <html lang="pt" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,10 +102,11 @@
     }
     .nav-links a:hover { color: var(--text-dim); }
     .nav-center {
-      font-family: var(--mono);
-      font-size: 0.6rem;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 0.75rem;
       color: var(--text-ghost);
       letter-spacing: 0.12em;
+      font-weight: 400;
     }
 
     /* TOGGLE */
@@ -447,18 +448,124 @@
       margin: 0 auto;
       text-align: center;
     }
+
+    /* ── TABLET ── */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-name {
+        font-size: clamp(4rem, 14vw, 6rem);
+      }
+      .hero-content {
+        padding: 0 6% 8%;
+      }
+      .entry {
+        padding: 3rem 3rem;
+      }
+      #memorias {
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+      .entry-divider {
+        max-width: 100%;
+      }
+      .intro-simple {
+        padding: 2rem 6%;
+      }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      nav {
+        padding: 1rem 5%;
+      }
+      .nav-center {
+        display: none;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .nav-links a {
+        font-size: 0.6rem;
+      }
+      .theme-toggle {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.5rem;
+      }
+      .hero {
+        min-height: 100svh;
+      }
+      .hero-name {
+        font-size: clamp(3.5rem, 18vw, 5rem);
+      }
+      .hero-desc {
+        font-size: 0.9rem;
+      }
+      .hero-content {
+        padding: 0 5% 10%;
+      }
+      .hero-meta-row {
+        gap: 2rem;
+      }
+      .hero-breadcrumb {
+        margin-bottom: 2rem;
+      }
+      .entry {
+        padding: 2.5rem 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .entry-body {
+        font-size: 1.1rem;
+        line-height: 1.85;
+      }
+      .entry-author {
+        font-size: 0.9rem;
+      }
+      .entry-date {
+        font-size: 0.58rem;
+      }
+      .entry-highlight {
+        font-size: 1.1rem;
+        padding: 1rem 1.2rem;
+      }
+      .poem-stanza {
+        font-size: 1.1rem !important;
+      }
+      #memorias {
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+      .intro-simple {
+        padding: 1.5rem 5%;
+      }
+      .intro-simple p {
+        font-size: 0.95rem;
+        max-width: 100%;
+      }
+      .entries-header {
+        padding: 0.9rem 5%;
+      }
+      footer {
+        padding: 1.4rem 5%;
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
 
   <nav>
     <div class="nav-links">
-      <a href="file:///Users/courinham4/Downloads/memoria-branca_1.html#memorias">Memórias</a>
+      <a href="file:///Users/courinham4/Downloads/memoria-branca_3.html#memorias">Memórias</a>
       
     </div>
     <div class="nav-center">BRANCA BROUNET DE MOURA</div>
     <div class="nav-links" style="align-items:center; gap: 2rem;">
-      <a href="file:///Users/courinham4/Downloads/memoria-branca_1.html#">Partilhar</a>
+      <a href="file:///Users/courinham4/Downloads/memoria-branca_3.html#">Partilhar</a>
       <button class="theme-toggle" onclick="toggleTheme()" id="toggle-btn">
         <div class="toggle-dot"></div>
         <span id="toggle-label">LIGHT</span>
@@ -610,8 +717,7 @@ A tristeza e a dor da despedida.</p>
         <p class="poem-stanza">Lembro-me de todas as vezes que semeamos e colhemos tudo, por mais diferente que fosse. Lembro-me das limonadas, das sandes de ovo mexido e de todos os animais que tivemos juntos.</p>
         <p class="poem-stanza">E da porta aberta.</p>
         <p class="poem-stanza">Lembro-me dos nossos segredos.</p>
-        <p class="poem-stanza">Lembro-me da Nazaré e de irmos à praça, à praia e a todo o lado.</p>
-        <p class="poem-stanza">Lembro-me das lições de inglês, de português e de vida.</p>
+        <p class="poem-stanza">Lembro-me da Nazaré e de irmos à praça, à praia e a todo o lado.<br>Lembro-me das lições de inglês, de português e de vida.</p>
         <p class="poem-stanza">E das tuas receitas.</p>
         <p class="poem-stanza">Lembro-me da tua doçura e de sentir que contigo somos todos iguais.</p>
         <p class="poem-stanza">Lembro-me da liberdade.</p>
