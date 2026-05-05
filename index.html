@@ -212,7 +212,7 @@
       line-height: 0.88;
       letter-spacing: -0.02em;
     }
-    [data-theme="light"] .hero-name { color: #1a1208; }
+    [data-theme="light"] .hero-name { color: #2e2a24; }
     [data-theme="light"] .hero-name em { color: #1a1208; opacity: 1; }
     .hero-name em { font-style: italic; opacity: 1; color: #f0e8d8; margin-left: 0.03em; }
 
@@ -266,7 +266,7 @@
       font-size: 1.15rem;
       color: var(--text-dim);
       font-style: italic;
-      line-height: 1.6;
+      line-height: 1.5;
     }
     .intro-right { padding: 3.5rem 5% 3.5rem 3.5rem; }
     .intro-right p {
@@ -334,12 +334,13 @@
 
     .entry-footer {
       display: flex;
-      align-items: baseline;
+      flex-direction: row;
+      align-items: center;
       gap: 1.2rem;
     }
     .entry-author {
       font-family: var(--serif);
-      font-size: 1.15rem;
+      font-size: 1.3rem;
       font-style: italic;
       color: var(--text-dim);
     }
@@ -350,9 +351,12 @@
     }
     .entry-date {
       font-family: var(--mono);
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       color: var(--text-faint);
       letter-spacing: 0.08em;
+      background: var(--border);
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
     }
 
     /* FOOTER */
@@ -403,7 +407,7 @@
     .poem-stanza {
       font-family: var(--serif);
       font-size: 1.3rem;
-      line-height: 2;
+      line-height: 1.5;
       color: var(--entry-body-color);
       letter-spacing: 0.015em;
       margin-bottom: 2rem !important;
@@ -437,13 +441,13 @@
       align-items: center;
       gap: 0.5rem;
       font-family: var(--mono);
-      font-size: 0.68rem;
+      font-size: 0.6rem;
       letter-spacing: 0.12em;
       color: var(--text-dim);
       background: none;
       border: 0.5px solid var(--border);
       border-radius: 20px;
-      padding: 0.65rem 1.4rem;
+      padding: 0.5rem 1.1rem;
       cursor: pointer;
       margin-top: 1.5rem;
       transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
@@ -566,7 +570,7 @@
       }
       .poem-stanza {
         font-size: 1.1rem !important;
-        line-height: 1.6 !important;
+        line-height: 1.5 !important;
       }
       #memorias {
         padding-left: 4%;
@@ -613,8 +617,8 @@
         font-size: 1.1rem !important;
       }
       .entry-footer {
-        flex-wrap: wrap;
-        gap: 0.6rem;
+        flex-wrap: nowrap;
+        gap: 0.8rem;
       }
     }
 
@@ -646,6 +650,44 @@
       mix-blend-mode: multiply;
       opacity: 0.7;
       filter: invert(1) sepia(0.15) brightness(0.85);
+    }
+
+    .submenu {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 5%;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-section);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .submenu::-webkit-scrollbar { display: none; }
+    .submenu-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .submenu-item {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-faint);
+      padding: 0.75rem 1.1rem;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: none;
+      transition: color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .submenu-item:hover {
+      color: var(--text);
+      background: transparent !important;
+    }
+    .submenu-item.active {
+      color: var(--text);
     }
   </style>
 </head>
@@ -703,10 +745,23 @@
   <div class="entries-header">
     <div class="entries-header-l">DOCUMENTOS ARQUIVADOS / MEMÓRIAS ESCRITAS</div>
   </div>
+  <div class="submenu">
+    <a class="submenu-item" onclick="scrollToEntry('entry-padre')" href="#">Padre Zé</a>
+    <div class="submenu-sep"></div>
+    <a class="submenu-item" onclick="scrollToEntry('entry-diogo')" href="#">Diogo</a>
+    <div class="submenu-sep"></div>
+    <a class="submenu-item" onclick="scrollToEntry('entry-antonio')" href="#">Domingues</a>
+    <div class="submenu-sep"></div>
+    <a class="submenu-item" onclick="scrollToEntry('entry-monica')" href="#">Mónica</a>
+    <div class="submenu-sep"></div>
+    <a class="submenu-item" onclick="scrollToEntry('entry-jorge')" href="#">Jorge</a>
+    <div class="submenu-sep"></div>
+    <a class="submenu-item" onclick="scrollToEntry('entry-joao')" href="#">João</a>
+  </div>
 
   <section id="memorias">
 
-    <div class="entry">
+    <div class="entry" id="entry-padre">
       <div class="entry-body">
         <div class="entry-highlight">
           Teve uma profissão: educadora. Como educadora, formou consciências, preparou rapazes e raparigas para o seu futuro. E é uma riqueza humana da qual nós nunca podemos imaginar a dimensão e o valor. Educadora, formadora, a preparar e rasgar caminhos para que tantos rapazes e tantas raparigas, a partir do ensino que lhes prestou, pudessem realizar na felicidade e, ao mesmo tempo, na realização humana, as suas próprias vidas.
@@ -727,14 +782,14 @@
         </div>
       </div>
       <div class="entry-footer">
-        <span class="entry-author">Padre Zé</span>
+        <span class="entry-author" id="entry-padre">Padre Zé</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">Elogio fúnebre · 28 ABR 2026</span>
       </div>
     </div>
     <div class="entry-divider"></div>
 
-    <div class="entry-handwritten">
+    <div class="entry-handwritten" id="entry-diogo">
       <div class="svg-wrap"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 2300.1 548">
   
   <defs>
@@ -742,7 +797,45 @@
       .st0 {
         fill: var(--handwriting-color);
       }
-    </style>
+  
+    .submenu {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 5%;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-section);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .submenu::-webkit-scrollbar { display: none; }
+    .submenu-sep {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+    .submenu-item {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-faint);
+      padding: 0.75rem 1.1rem;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: none;
+      transition: color 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+    .submenu-item:hover {
+      color: var(--text);
+      background: transparent !important;
+    }
+    .submenu-item.active {
+      color: var(--text);
+    }
+  </style>
   </defs>
   <path class="st0" d="M246.3,314.7c-22.1,10.3-27.1-5.4-35-22.5-5.6-7.7-11.7,9.8-15,13-6.8,8.2-19.3,19.5-30.6,13.8-9.7-6.8-12.6-19.6-9.6-30.6,2.3-17.1,18.2-48.1,39.3-36.3,3.2.7,9.5,13.2,11.3,9,1.4-6.2.7-13.4,1.9-19.6,1.5-8.4,1.8-16.5,2.5-24.8.5-3.7,4-6.9,7.5-6.6,5.8,1.1,4.1,10.2,3.8,14.6-2.1,12.2-4.6,24.6-5.3,37-1,7.9-.7,15.6,2,23.2,2.5,8.3,5.3,19,14.4,22.2,4.3,1.3,10.3.2,10.3-4.8-1.3-9.1-3.4-20-.8-28.3,1.1-3.8,2.4-7.8,5.1-10.9,5.4-5.6,16.3-5.5,18.9,2.9,6.5,12.2-.5,25.8-6.9,36.6-2.9,5.1.4,12.4,6.6,12.3,15.1-1.3,25.7-15.6,33.6-27.3,3.1-6.1,10.6-12.4,5.7-19.5-6.1-8.6-11.4-17.9-10.6-28.5,1-7.3,2.3-15.9,7.6-21.3,3.4-2.6,10.3-3.9,13.9-.8,4.4,3.9,5.9,23.3,6.6,30,.5,6.9-3.3,15.3,3.1,20.1,8.1,5.3,14.2,13.1,17.8,22,2.4,6,3.5,12.1,8.6,16.7,2.9,2.7,7.3,6.4,11.2,5.9,3.2-2.1.7-7.7,1.1-11,.2-8.1,2.2-17.9,8.2-23.9,4.1-2.8,10.5-5.6,15.1-4.7,7.6,3,9.8,15.2,7,22.4-3,8-8.7,14.7-13.1,21.8-1.3,6.6,9.8,3.7,13.4,1.5,6.9-4.1,11.4-11.2,16.9-16.8,9.3-10.8,16.9-22.9,20.8-36.7,5.2-16.5,5.5-33.7,6-50.9-.3-5.3,4.8-9.9,8.2-4.1,1.1,2.2,1.3,5.1,1.5,7.7.4,8.5-.8,17.1.8,25.4,2.1,9.4,5.3,18.3,7.4,27.8,1.6,6.4,3.3,12.4,4.6,18.3,1.5,3.7,1,12.5,5.3,13.5,6.5-1.4,18-6.2,19.3-12.9,2-11.9,1.6-26.7,10.8-35.5,7.3-5.8,8.1,3.9,13.5,5.5,6.1,1.1,13.4-.8,18.3,4.5,4.7,4,5.3,12.6,10.2,15.8,6.4.8,13.2-8.1,19.1-9.7,2.9-.3,4.6,3.2,4.6,5.7-.6,7-11.6,9.6-17,12.4-6.4,1.7-9.2,4.8-8.9,11.6.3,8.8-2.5,15-4.6,23-1.6,5.3-7.5,7.1-12,10-8.4,5.4-19.3,2-26.3-4.4-4.5-4.5-3.2-12.3-6.3-17.7-2-4.8-6.7-4-10.6-2.4-4.3,1.8-8.4,2.5-10.5,6.1-2.1,7.4,0,16.2-.6,24,.4,11-1.1,21.7-2.8,32.7-7.8,37.2-31.3,21.5-38.1-5.9-3.4-16-4.6-26.3,4.2-41.1,6.9-12.4,28.4-8.8,24.5-25-.6-10.3-3.4-18.3-6-28.4-.6-2.6-2.5-13.1-5.2-6-6.8,24.6-22.3,47.6-42.5,63.2-5.7,4.5-14.2,9.6-20.9,3.9-3.5-2.7-5.5-7.1-9.7-8.6-4.4-1.7-9.5.9-14.1.1-5.8-2-11.8-10.2-14.5-15.5-3.5-8.9-6.2-18.6-13.2-25.8-2.7-3-6-6.9-8.7-6.3-2.4.5-3.7,4.5-4.9,6.8-2.9,6-9.2,15.2-13.2,20.1-9,9.5-19.6,19.7-31.6,24.9-9.4,2.3-16.6-13.7-23.7-12.7h-.2ZM312.5,258.6c1.6-2.2,1.3-5.8,1.7-8.6.7-6.6.5-13.5-.8-19.9-.6-3.8-3.4-5.8-6.3-2.2-3,3.6-3.6,10.3-3.2,15.2.2,3.8,1.7,6.9,3.5,10.4.8,1.5,3,6.5,5,5.3h0ZM171.2,310c3.7,0,8-.7,11.1-2.9,5-3.8,10.6-11.9,14.8-18.5,3-4.4,2.2-9.6,1.1-14.5-.7-3.6-1.1-7.6-3.3-10.6-7.5-9.7-18.2,2.2-22.4,9.2-5.2,8.4-9.1,19.4-7.3,29.6.9,3.3,2.4,7.3,5.8,7.6h.1ZM526.7,280.8c1.9-3.2-1.2-7.6-3.2-10.2-2.1-2.6-5.5-4-8.6-2.9-2,.8-4.4,1.7-5.6,3.4-1.7,3.2,1.9,7.6,4.8,9.2,3.2,1.7,9.6,3.3,12.4.7h.1ZM260.1,280.3c2.3-11.4-3.4-12.4-8.8-3-1.8,3.1-1.6,7.1-1.3,10.9.3,2.3.4,6.3,3.1,6.9,1.3.2,2.8-2.2,3.4-4.1,1.3-3.3,2.8-7.2,3.5-10.5v-.2ZM385.9,284.5c-2.3-1.6-5.2,1.3-6.8,3-3.7,4.2-5.7,9.8-4.8,15.3.3,2.6,1.6,5.3,4,2.3,3.1-4.2,10.5-15.5,7.7-20.5h0ZM508.1,325.8c2.8-.4,6.2-1.2,9-2.1,8.2-2.8,10.6-14.4,10.8-25.8.3-3.7-.7-6.6-4.6-7.3-4-.8-7.3-1.3-11.1-3.3-1.7-.7-3.9-2.1-5.7-1.8-1,.4-1.2,1.8-1.6,2.8-.4,1.4-1.1,2.9-2,4.1-4,5.3-9.2,7-7.6,14.5,1.3,6.1,4.9,19.8,12.4,18.9h.2ZM453.4,371.1c1.3-4,1.9-7.4,2.5-11.9,1-7.2,2-13.6,1.6-20.8-.1-2.8.2-5.8-.6-8.4-.5-2.5-4.1-3.9-3.3-6.5.5-1.2,2.3-2.9,2.2-3.8-1.3-3-8.8,2.1-10.8,3.1-4.1,2.4-7.1,4.1-9.8,8.8-3.1,5.5-5.2,11.4-4.8,17.8.6,11.3,5.1,26.7,14.2,33.3,4.4,2.4,7.4-8,8.7-11.5v-.2Z"/>
   <path class="st0" d="M479.8,460.4c-2.3,7.2-3.5,16.3-9.9,21.1-7.7,6.4-19.3,13.9-28.5,6.2-2-1.4-3.9-3.8-5.9-5-6.4-3.1-8.8,6.9-10.2,11.5-2.6,8.7-4.2,17.8-8.6,25.4-5,8-12.3,15.5-21.8,17.4-4.5,1.3-9.1,1.5-13.4-.8-5.5-3-10.7-6.4-13-12.6-1.5-4.4-2.7-9.8-.7-14.2,2.7-5.1,8.2-8.1,12.8-11.4,6.9-4.7,13.7-7.1,21.2-10.4,6.2-3.1,14.7-4.6,15.4-10.8,1.4-5.6-.5-19.5-6.3-7.3-2.6,4.9-6.4,11.6-11.4,14.5-5,3.2-13,3.9-15.7-2.6-3.3-7-2.1-15.1-1.2-22.6.5-3.5,2.1-7,1.9-10.3-.6-3.4-5.3-.7-7.3-.1-8.2,2.5-8,8.2-8.8,15.3-1.3,7.8-6,15.1-12.4,19.8-4.7,3.3-10.9,3.2-16.5,2.2-7.4-1-11.5-9.7-19.3-9.2-8.9.2-16.3-2.2-19.8-11-3.1-6.3-6.8-11.9-8.9-18.4-2.5-8-2.9-15.7-10.1-4.4-9.6,12.7-20.5,26.1-37.9,25.4-3.8-.3-7-1.8-10.7-2.5-3.1-.6-6.3-.2-9.4-1.2-4.6-.4-11.7-12.2-15.2-8.8-1.8,2-1.7,7-2.8,9.9-1.5,5-4.9,11.4-9,14.7-9.1,7.2-19.2-3.1-23.4-11.1-4.1-8.8-8.1-17.7-9.6-27.5-.8-6.2-2.1-12.4-3.4-18.5-.4-6.7,2.6-14,8.1-18.1,8.7-6.6,19.9,1,26,7.6,1.4,1.2,4.8,6.8,6.3,3.2.9-2.6.6-7.5,0-10.6-.8-3.7-3.4-7-5.1-10.4-3.7-7.5-5.2-22.3-.5-29.7,2.6-4.4,5.5-8.8,9.8-11.3,7.2-3.9,18.4-4.2,26.1-1.8,9.4,4.8,13.7,16,16.3,25.7,2.1,5.5,4.6,11.6,6.5,17,1.2,2.9,3.1,5.6,3.6,8.4.5,5.3-.8,10.6-1,15.9-1.3,6.6-2.5,13.7-4.6,20-1.5,4.2-3.7,8.4-5.4,12.6-1.9,3.9-4,8.8,2.7,7.3,9.1-2,15.6-9.8,21.1-16.9,7-9.1,11.7-18.8,14.7-29.8.6-2.1,1.3-4.4,2.5-6.2,2.4-3.8,6.5-3.1,8,.9,3.3,11-.5,23.9,3.8,34.9,2.1,6.5,5.7,12.4,9.3,18,2,3.3,5.2,6.9,9.2,7.1,2.3,0,3.8-1.1,4.1-3.6.2-5.9-1.5-11.9-1.1-17.8.1-5.8,1.2-11.8,3.2-17.3,3.6-9,14.3-29.6,23.7-14.1,1,1.2,2.1,2.3,3.4,3.1,3,1.9,6.4,2.1,8.5,4.1,4.2,4.3,6,11.4,8.7,17,2.4,6.1,8.5,1.3,12.5-.3,4.9-2.3,8.5-3.7,12.9-6.3,2.7-1.5,5.7-3.9,8.8-3.9,3.5.7,3.9,6,2.7,8.8-2.2,5-8,8.6-10.3,13.4-2,3.6-3,7.3-4.1,11.8-.8,3.5-1.9,7.4-1,10.8.8,3,3.3,4.5,5.9,2.9,3.9-2.8,5.9-7.7,8.5-13,2.3-5.1,4.1-9.9,6.1-15.2,1.7-4,2.3-7.8,5.1-10.9,4.3-4.3,8.2-1,8.5,4.2.4,4.1,1.2,10.3,1.8,15.2.8,5.4,1.5,10.7,4.1,15.3,2.2,2.2,3.4-1.2,3.8-4.3.2-15.9.6-34.3,20.8-36,4.9-.3,10.1-.4,15,.3,5.1.8,7.3,6.6,8.9,10.6.7,1.4,1.5,2.3,2.9,2.4,2.7,0,5.8-1.5,8.5-2.3,3.6-1.1,7.3-3.1,10.5-4.4,3.8-1.7,8.1,2.1,6.1,6.1-5,8.2-23,6.8-26.2,16.6v.2ZM226.6,393.3c-4-4.6-12.1-1.2-13.8,4-2.5,7.1,4.2,8.5,10.8,8.3,3.5,0,7-.3,10.6-.5,5.2-.4,11.2-.5,11.2-6.5-.4-7.9-3.3-15.7-6.2-22.8-4-9.4-7.8-18.1-19.6-17.5-12.5-.4-20.6,10.9-19,22.7.4,3,.9,5.5,1.6,8,.4,1.4,1,3.1,2.2,3.8,2.1.8,3.9-3.6,5.9-5,2.5-2.3,5.6-3.7,8.8-4.9,5.3-2.1,11.4-2.5,14.6,2.9,2.1,3.6,4,8.2,2.7,12.4-.8,2.1-3.5,2.8-5.5,1.3-2.1-1.5-2.7-4.2-4.2-6.1h-.1ZM217,447.9c3.4,3.6,8,9.2,13.6,7.4,7.6-3.3,12.4-21.2,14.9-31.1,1-5.1,4.7-16.1-3.7-14.3-7.1,1.6-14.7,4-22.1,3.1-3.5-.3-9.6-2.8-9.5,2.9,0,6-.5,14.1.2,19.4.5,4.8,3.1,9.2,6.4,12.4h.1ZM182.3,468.7c1.9,2.8,6.1,5.5,9.7,4.9,3-.7,4.2-3.4,5.5-6.7,2.8-8,4.7-18,4.1-26.4-.1-3.1-2-6-3.8-9-2.3-3.7-4.3-7.6-6.9-11-3.5-4.3-10.1-10.8-15.4-8.8-2.4,1.3-3.5,5.6-4.1,9.3-.7,5,.3,9.6.8,14.6.3,2.8.5,5.6.9,8.3.5,3.3,1.3,6.8,2.7,10,1.3,3.6,6.2,5.1,6.3,9,0,1.9-.9,3.9.2,5.7h0ZM359.3,444.5c.5-1.3,0-2.9-.4-4.2-1.5-4.6-1.5-8.9-5.5-12.7-1.8-1.8-5.4-2.8-4.8,1,.4,2.1,1,4.1,1.2,6.3.5,3.2,0,7.4,1.5,10.4,1.5,2.2,6.8,1.8,8-.5h0ZM338.5,450.9c-.3-2.3-2.1-4.4-3.3-6.6-1.4-2.5-1.6-5.5-3.5-7.5-1.9-1.3-3.4,1.7-4,4-.8,3.7-.1,7.6-.1,11.5.3,3.8-.7,13.4,4.9,9.2,2.6-2.5,6.5-6.5,6.1-10.4v-.2ZM446.6,452.8c-.8-1.2-2.4-2.3-3.9-1.8-3.4,1.7-2.2,11.2-1,14.3,1,1.9,2.5.4,3.7-1.4,1.9-3,3.1-7.8,1.4-11v-.2ZM349.7,476c4.2-3,6.8-8.3,9.2-12.9.9-2.3,2.5-5.8.4-7.8-1.8-1.3-6.1-1.4-8.7-.7-3.9,1.7-5.7,6.4-8.9,9.1-2.1,2.5-5.3,4.7-6.4,7.9-.4,2,2.1,4,5,5.2,3,1.4,6.4,1,9.3-.7h.2ZM444.7,479.7c4,5,11.2,1.2,15.5-1.9,2.3-1.7,3.6-4.2,4.7-6.8.8-1.8,1.6-3.7,2.7-5.4,1.2-2,2.6-4.3,2.3-5.9-.9-3.5-6.2-2.8-8.7-1.4-3.7,2.2-5.1,7.8-8.6,11-2.1,3.2-10.8,6-8,10.3h0ZM385.4,529.5c13.5,3,23.4-11.1,26.9-22.8,1.1-3.8,2.3-8.4,3.4-12.4,1.6-5.2-1.3-5.5-5.9-3.7-5.4,2.4-10.3,5.5-15.4,8.6-4.7,2.7-9.3,5.6-13.5,9.1-1.8,1.4-3.5,3.1-4.3,5.3-2.2,6.3,1.6,14.5,8.5,15.8h.2Z"/>
@@ -767,7 +860,7 @@
   
 </svg></div>
       <div class="entry-footer">
-        <span class="entry-author">Diogo</span>
+        <span class="entry-author" id="entry-diogo">Diogo</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">28 ABR 2026</span>
       </div>
@@ -775,7 +868,7 @@
 
     <div class="entry-divider"></div>
 
-    <div class="entry">
+    <div class="entry" id="entry-antonio">
       <div class="entry-body">
         <p class="entry-title">Querida Branca - mãe, avó, bisavó, sogra e amiga</p>
         <p class="poem-stanza">Uma brisa, apagou a tua chama...<br>
@@ -800,7 +893,7 @@ A tristeza e a dor da despedida.</p>
         <p class="poem-closing">Até sempre.</p>
       </div>
       <div class="entry-footer">
-        <span class="entry-author">António Domingues</span>
+        <span class="entry-author" id="entry-antonio">António Domingues</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">Abrantes, 28 ABR 2026</span>
       </div>
@@ -808,7 +901,7 @@ A tristeza e a dor da despedida.</p>
 
     <div class="entry-divider"></div>
 
-    <div class="entry">
+    <div class="entry" id="entry-monica">
       <div class="entry-body">
         <p class="poem-stanza">A avó Branca.</p>
         <p class="poem-stanza">Eu tinha 16 anos, ele 17. Eu já tinha uma família, mas ganhei a dele! O Tó roubou-me o coração mas em troca deu-me um irmão, pais, primos, tios e avós, que se vieram juntar à sorte imensa que eu já tinha.</p>
@@ -820,7 +913,7 @@ A tristeza e a dor da despedida.</p>
         <p class="poem-stanza">A Avó Branca, a minha querida Avó Branca.</p>
       </div>
       <div class="entry-footer">
-        <span class="entry-author">Mónica Tremoço Courinha</span>
+        <span class="entry-author" id="entry-monica">Mónica Tremoço Courinha</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">5 DEZ 2020</span>
       </div>
@@ -828,7 +921,7 @@ A tristeza e a dor da despedida.</p>
 
     <div class="entry-divider"></div>
 
-    <div class="entry">
+    <div class="entry" id="entry-jorge">
       <div class="entry-body">
         <p class="poem-stanza">A avó era um exemplo de serenidade, humildade e, acima de tudo, devoção à nossa família e aos que mais precisavam. Os seus olhos, sempre observadores, nunca serão esquecidos. Nunca precisou de alterar o espírito, mas a sua aura impunha um respeito que nenhum de nós alguma vez queria desapontar. Uma verdadeira líder, que seguíamos como exemplo.</p>
         <p class="poem-stanza">É, para mim, um dos maiores exemplos de vida que continuo a não querer desapontar. Nunca esquecerei os momentos de amor e felicidade vividos em família, em Abrantes, à volta da mesa redonda, ou na Nazaré, na casa velha.</p>
@@ -836,7 +929,7 @@ A tristeza e a dor da despedida.</p>
         <p class="poem-stanza">Obrigado! Gostaria muito de estar convosco hoje, mas, mais uma vez, não foi possível. Encontramo-nos no verão para, mais uma vez, celebrarmos a família que eles começaram a construir e mantiveram unida...</p>
       </div>
       <div class="entry-footer">
-        <span class="entry-author">Jorge Sousa</span>
+        <span class="entry-author" id="entry-jorge">Jorge Sousa</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">28 ABR 2026</span>
       </div>
@@ -845,7 +938,7 @@ A tristeza e a dor da despedida.</p>
   
     <div class="entry-divider"></div>
 
-    <div class="entry">
+    <div class="entry" id="entry-joao">
       <div class="entry-body">
         <p class="poem-stanza">Das primeiras memórias que tenho é a de dormir num colchão ao lado da tua cama e do avô. Adormecia a ouvir-te contar histórias sobre andorinhas que voavam por entre os prédios, sempre diferentes.</p>
         <p class="poem-stanza">Lembro-me de todas as vezes que semeamos e colhemos tudo, por mais diferente que fosse. Lembro-me das limonadas, das sandes de ovo mexido e de todos os animais que tivemos juntos.</p>
@@ -859,7 +952,7 @@ A tristeza e a dor da despedida.</p>
         <p class="poem-closing">Obrigado minha Avó Branca.</p>
       </div>
       <div class="entry-footer">
-        <span class="entry-author">João</span>
+        <span class="entry-author" id="entry-joao">João</span>
         <span class="entry-sep">·</span>
         <span class="entry-date">28 ABR 2026</span>
       </div>
@@ -869,10 +962,22 @@ A tristeza e a dor da despedida.</p>
 
   <footer>
     <div class="footer-l">Branca Brounet de Moura</div>
-    <div class="footer-r">ARQUIVO FAMILIAR · M_B · 2026</div>
+    <div class="footer-r">ARQUIVO FAMILIAR · 2026</div>
   </footer>
 
   <script>
+
+    function scrollToEntry(id) {
+      event.preventDefault();
+      const el = document.getElementById(id);
+      if (!el) return;
+      const offset = 80;
+      const top = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      document.querySelectorAll('.submenu-item').forEach(i => i.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
     function toggleReadMore(btn) {
       const content = btn.nextElementSibling;
       const isOpen = content.classList.contains('open');
