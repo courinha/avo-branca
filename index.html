@@ -188,7 +188,7 @@
     .corner-tl { top: 2rem; left: 5%; }
     .corner-tr { top: 2rem; right: 5%; text-align: right; }
 
-    .hero-content { position: relative; z-index: 2; padding: 0 5% 7%; }
+    .hero-content { position: relative; z-index: 2; padding: 0 5% 6%; }
     .hero-breadcrumb {
       font-family: var(--mono);
       font-size: 0.56rem;
@@ -202,7 +202,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6rem;
+      gap: 4rem;
       align-items: flex-end;
     }
     .hero-name {
@@ -218,29 +218,31 @@
 
     .hero-desc {
       font-family: var(--serif);
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: rgba(232,224,208,0.72);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(232,224,208,0.75);
       font-style: italic;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.8rem;
+      padding-bottom: 2.8rem;
+      border-bottom: 0.5px solid rgba(232,224,208,0.1);
     }
     [data-theme="light"] .hero-desc { color: rgba(26,22,18,0.55); }
-    .hero-meta-row { display: flex; gap: 3rem; }
+    .hero-meta-row { display: flex; gap: 3rem; align-items: flex-start; }
     .hero-meta-label {
       font-family: var(--mono);
-      font-size: 0.5rem;
-      color: rgba(232,224,208,0.22);
-      letter-spacing: 0.14em;
+      font-size: 0.6rem;
+      color: rgba(232,224,208,0.45);
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
-    [data-theme="light"] .hero-meta-label { color: rgba(26,22,18,0.55); }
+    [data-theme="light"] .hero-meta-label { color: rgba(26,22,18,0.5); }
     .hero-meta-val {
       font-family: var(--serif);
-      font-size: 0.95rem;
-      color: rgba(232,224,208,0.75);
+      font-size: 1.4rem;
+      color: rgba(232,224,208,0.88);
     }
-    [data-theme="light"] .hero-meta-val { color: rgba(26,22,18,0.75); }
+    [data-theme="light"] .hero-meta-val { color: rgba(26,22,18,0.85); }
 
     /* INTRO */
     .intro {
@@ -493,6 +495,15 @@
       .hero-content {
         padding: 0 6% 8%;
       }
+      .hero-desc {
+        font-size: 1rem;
+      }
+      .hero-meta-val {
+        font-size: 1.2rem;
+      }
+      .hero-meta-row {
+        gap: 2.5rem;
+      }
       .entry {
         padding: 3rem 3rem;
       }
@@ -539,7 +550,19 @@
         font-size: clamp(3.5rem, 18vw, 5rem);
       }
       .hero-desc {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+      }
+      .hero-meta-val {
+        font-size: 1.15rem;
+      }
+      .hero-meta-label {
+        font-size: 0.55rem;
+      }
+      .hero-meta-row {
+        gap: 2rem;
       }
       .hero-content {
         padding: 0 5% 10%;
