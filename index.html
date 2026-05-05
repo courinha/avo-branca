@@ -693,12 +693,13 @@
       }
       .submenu {
         padding: 0 3%;
-        flex-wrap: wrap;
-        overflow-x: visible;
+        flex-wrap: nowrap;
+        overflow-x: hidden;
       }
       .submenu-item {
-        font-size: 0.72rem;
-        padding: 0.55rem 0.6rem;
+        font-size: 0.6rem;
+        padding: 0.55rem 0.45rem;
+        letter-spacing: 0.02em;
       }
       .submenu-sep {
         height: 10px;
@@ -813,6 +814,7 @@
     }
     .submenu-item.active {
       color: var(--text);
+      font-weight: 500;
     }
   </style>
 </head>
@@ -964,6 +966,7 @@
     }
     .submenu-item.active {
       color: var(--text);
+      font-weight: 500;
     }
   </style>
   </defs>
@@ -1096,6 +1099,44 @@ A tristeza e a dor da despedida.</p>
   </footer>
 
   <script>
+
+
+    // Scroll spy for submenu
+    function initScrollSpy() {
+      const entries = [
+        { id: 'entry-padre', link: document.querySelector('.submenu-item[onclick*="entry-padre"]') },
+        { id: 'entry-diogo', link: document.querySelector('.submenu-item[onclick*="entry-diogo"]') },
+        { id: 'entry-antonio', link: document.querySelector('.submenu-item[onclick*="entry-antonio"]') },
+        { id: 'entry-monica', link: document.querySelector('.submenu-item[onclick*="entry-monica"]') },
+        { id: 'entry-jorge', link: document.querySelector('.submenu-item[onclick*="entry-jorge"]') },
+        { id: 'entry-joao', link: document.querySelector('.submenu-item[onclick*="entry-joao"]') },
+      ].filter(e => document.getElementById(e.id) && e.link);
+
+      const navHeight = document.querySelector('nav')?.offsetHeight || 65;
+      const submenuHeight = document.querySelector('.submenu')?.offsetHeight || 40;
+      const offset = navHeight + submenuHeight + 20;
+
+      const observer = new IntersectionObserver((obs) => {
+        obs.forEach(ob => {
+          if (ob.isIntersecting) {
+            const id = ob.target.id;
+            entries.forEach(e => {
+              if (e.link) e.link.classList.toggle('active', e.id === id);
+            });
+          }
+        });
+      }, {
+        rootMargin: `-${offset}px 0px -60% 0px`,
+        threshold: 0
+      });
+
+      entries.forEach(e => {
+        const el = document.getElementById(e.id);
+        if (el) observer.observe(el);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initScrollSpy);
 
     function scrollToEntry(id) {
       event.preventDefault();
