@@ -31,8 +31,8 @@
       --bg-section: #000;
       --text: #e8e0d0;
       --text-dim: rgba(232,224,208,0.5);
-      --text-faint: rgba(232,224,208,0.22);
-      --text-ghost: rgba(232,224,208,0.12);
+      --text-faint: rgba(232,224,208,0.45);
+      --text-ghost: rgba(232,224,208,0.22);
       --border: rgba(255,255,255,0.07);
       --border-faint: rgba(255,255,255,0.06);
       --divider: rgba(255,255,255,0.1);
@@ -40,8 +40,8 @@
       --hero-overlay: linear-gradient(to top, rgba(12,11,9,0.96) 0%, rgba(12,11,9,0.55) 40%, rgba(12,11,9,0.18) 100%);
       --intro-bg: var(--bg);
       --entry-body-color: rgba(232,224,208,0.72);
-      --entry-author-color: rgba(232,224,208,0.38);
-      --entry-date-color: rgba(232,224,208,0.22);
+      --entry-author-color: rgba(232,224,208,0.55);
+      --entry-date-color: rgba(232,224,208,0.45);
       --toggle-bg: rgba(255,255,255,0.06);
       --toggle-border: rgba(255,255,255,0.1);
       --toggle-color: rgba(232,224,208,0.4);
@@ -57,8 +57,8 @@
       --bg-section: #fff;
       --text: #1a1612;
       --text-dim: rgba(26,22,18,0.6);
-      --text-faint: rgba(26,22,18,0.35);
-      --text-ghost: rgba(26,22,18,0.18);
+      --text-faint: rgba(26,22,18,0.55);
+      --text-ghost: rgba(26,22,18,0.3);
       --border: rgba(0,0,0,0.08);
       --border-faint: rgba(0,0,0,0.06);
       --divider: rgba(0,0,0,0.08);
@@ -66,8 +66,8 @@
       --hero-overlay: linear-gradient(to top, rgba(245,242,237,0.97) 0%, rgba(245,242,237,0.6) 40%, rgba(245,242,237,0.2) 100%);
       --intro-bg: var(--bg);
       --entry-body-color: rgba(26,22,18,0.75);
-      --entry-author-color: rgba(26,22,18,0.4);
-      --entry-date-color: rgba(26,22,18,0.28);
+      --entry-author-color: rgba(26,22,18,0.6);
+      --entry-date-color: rgba(26,22,18,0.5);
       --toggle-bg: rgba(0,0,0,0.04);
       --toggle-border: rgba(0,0,0,0.1);
       --toggle-color: rgba(26,22,18,0.45);
@@ -107,7 +107,7 @@
     .nav-links a {
       font-family: var(--sans);
       font-size: 0.68rem;
-      color: var(--text-faint);
+      color: var(--text-dim);
       text-decoration: none;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -117,7 +117,7 @@
     .nav-center {
       font-family: 'Instrument Sans', sans-serif;
       font-size: 0.75rem;
-      color: var(--text-ghost);
+      color: var(--text-faint);
       letter-spacing: 0.12em;
       font-weight: 400;
     }
@@ -126,26 +126,27 @@
     .theme-toggle {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
       background: var(--toggle-bg);
       border: 0.5px solid var(--toggle-border);
-      border-radius: 20px;
-      padding: 0.35rem 0.9rem;
-      cursor: pointer;
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      color: var(--toggle-color);
-      transition: all 0.3s ease;
-      user-select: none;
-    }
-    .theme-toggle:hover { color: var(--text-dim); }
-    .toggle-dot {
-      width: 6px;
-      height: 6px;
       border-radius: 50%;
-      background: var(--toggle-color);
-      transition: background 0.3s ease;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      color: var(--toggle-color);
+      transition: all 0.25s ease;
+      user-select: none;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      color: var(--text-dim);
+      border-color: var(--text-faint);
+      background: rgba(232,224,208,0.08);
+      transform: rotate(20deg);
+    }
+    [data-theme=light] .theme-toggle:hover {
+      background: rgba(26,22,18,0.06);
     }
 
     /* HERO */
@@ -191,11 +192,11 @@
     .hero-breadcrumb {
       font-family: var(--mono);
       font-size: 0.56rem;
-      color: rgba(180,160,130,0.5);
+      color: rgba(200,185,160,0.7);
       letter-spacing: 0.1em;
       margin-bottom: 3rem;
     }
-    [data-theme="light"] .hero-breadcrumb { color: rgba(60,45,30,0.45); }
+    [data-theme="light"] .hero-breadcrumb { color: rgba(60,45,30,0.65); }
     .hero-breadcrumb span { opacity: 0.8; }
 
     .hero-grid {
@@ -219,7 +220,7 @@
       font-family: var(--serif);
       font-size: 1.05rem;
       line-height: 1.9;
-      color: rgba(232,224,208,0.55);
+      color: rgba(232,224,208,0.72);
       font-style: italic;
       margin-bottom: 2.5rem;
     }
@@ -233,13 +234,13 @@
       text-transform: uppercase;
       margin-bottom: 0.4rem;
     }
-    [data-theme="light"] .hero-meta-label { color: rgba(26,22,18,0.28); }
+    [data-theme="light"] .hero-meta-label { color: rgba(26,22,18,0.55); }
     .hero-meta-val {
       font-family: var(--serif);
       font-size: 0.95rem;
-      color: rgba(232,224,208,0.55);
+      color: rgba(232,224,208,0.75);
     }
-    [data-theme="light"] .hero-meta-val { color: rgba(26,22,18,0.55); }
+    [data-theme="light"] .hero-meta-val { color: rgba(26,22,18,0.75); }
 
     /* INTRO */
     .intro {
@@ -338,9 +339,9 @@
     }
     .entry-author {
       font-family: var(--serif);
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       font-style: italic;
-      color: var(--entry-author-color);
+      color: var(--text-dim);
     }
     .entry-sep {
       font-family: var(--mono);
@@ -349,8 +350,8 @@
     }
     .entry-date {
       font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--entry-date-color);
+      font-size: 0.75rem;
+      color: var(--text-faint);
       letter-spacing: 0.08em;
     }
 
@@ -368,13 +369,13 @@
     .footer-l {
       font-family: var(--serif);
       font-size: 0.9rem;
-      color: var(--footer-text);
+      color: var(--text-dim);
       font-style: italic;
     }
     .footer-r {
       font-family: var(--mono);
       font-size: 0.5rem;
-      color: var(--footer-meta);
+      color: var(--text-faint);
       letter-spacing: 0.14em;
     }
 
@@ -436,18 +437,26 @@
       align-items: center;
       gap: 0.5rem;
       font-family: var(--mono);
-      font-size: 0.55rem;
+      font-size: 0.68rem;
       letter-spacing: 0.12em;
-      color: var(--text-faint);
+      color: var(--text-dim);
       background: none;
-      border: 0.5px solid var(--border-faint);
+      border: 0.5px solid var(--border);
       border-radius: 20px;
-      padding: 0.5rem 1.1rem;
+      padding: 0.65rem 1.4rem;
       cursor: pointer;
       margin-top: 1.5rem;
-      transition: color 0.2s, border-color 0.2s;
+      transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
     }
-    .read-more-btn:hover { color: var(--text-dim); border-color: var(--border); }
+    .read-more-btn:hover {
+      color: var(--text);
+      border-color: var(--text-dim);
+      background: rgba(232,224,208,0.06);
+      transform: translateY(-1px);
+    }
+    [data-theme=light] .read-more-btn:hover {
+      background: rgba(26,22,18,0.05);
+    }
     .read-more-content { display: none; margin-top: 1.5rem; }
     .read-more-content.open { display: block; }
     .intro-simple {
@@ -461,7 +470,7 @@
       font-family: var(--serif);
       font-size: 1.1rem;
       line-height: 1.95;
-      color: var(--text-faint);
+      color: var(--text-dim);
       font-style: italic;
       max-width: 560px;
       margin: 0 auto;
@@ -557,6 +566,7 @@
       }
       .poem-stanza {
         font-size: 1.1rem !important;
+        line-height: 1.6 !important;
       }
       #memorias {
         padding-left: 4%;
@@ -649,9 +659,10 @@
     <div class="nav-center">BRANCA BROUNET DE MOURA</div>
     <div class="nav-links" style="align-items:center; gap: 2rem;">
       <a href="#">Partilhar</a>
-      <button class="theme-toggle" onclick="toggleTheme()" id="toggle-btn">
-        <div class="toggle-dot"></div>
-        <span id="toggle-label">LIGHT</span>
+      <button class="theme-toggle" onclick="toggleTheme()" id="toggle-btn" title="Mudar tema">
+        <svg id="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
       </button>
     </div>
   </nav>
@@ -663,7 +674,7 @@
     <div class="hero-overlay"></div>
     
     <div class="hero-content">
-      <div class="hero-breadcrumb">Memória / <span>Arquivo</span> / Branca / Textos</div>
+      <div class="hero-breadcrumb">Memória / <span>Textos</span></div>
       <div class="hero-grid">
         <div>
           <div class="hero-name">Branca<em>.</em></div>
@@ -869,15 +880,17 @@ A tristeza e a dor da despedida.</p>
       btn.textContent = isOpen ? 'LER ELOGIO COMPLETO ↓' : 'FECHAR ↑';
     }
 
+    const sunIcon = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
     function toggleTheme() {
       const html = document.documentElement;
-      const label = document.getElementById('toggle-label');
+      const icon = document.getElementById('toggle-icon');
       if (html.getAttribute('data-theme') === 'dark') {
         html.setAttribute('data-theme', 'light');
-        label.textContent = 'DARK';
+        icon.innerHTML = moonIcon;
       } else {
         html.setAttribute('data-theme', 'dark');
-        label.textContent = 'LIGHT';
+        icon.innerHTML = sunIcon;
       }
     }
   </script>
