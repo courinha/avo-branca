@@ -728,6 +728,11 @@
       background: var(--bg-section);
       overflow-x: auto;
       scrollbar-width: none;
+      position: sticky;
+      top: var(--nav-height, 65px);
+      z-index: 90;
+      backdrop-filter: blur(12px);
+      transition: background 0.4s ease;
     }
     .submenu::-webkit-scrollbar { display: none; }
     .submenu-sep {
@@ -874,6 +879,11 @@
       background: var(--bg-section);
       overflow-x: auto;
       scrollbar-width: none;
+      position: sticky;
+      top: var(--nav-height, 65px);
+      z-index: 90;
+      backdrop-filter: blur(12px);
+      transition: background 0.4s ease;
     }
     .submenu::-webkit-scrollbar { display: none; }
     .submenu-sep {
@@ -1045,6 +1055,16 @@ A tristeza e a dor da despedida.</p>
       document.querySelectorAll('.submenu-item').forEach(i => i.classList.remove('active'));
       event.currentTarget.classList.add('active');
     }
+
+    function updateNavHeight() {
+      const nav = document.querySelector('nav');
+      if (nav) {
+        document.documentElement.style.setProperty('--nav-height', nav.offsetHeight + 'px');
+      }
+    }
+    updateNavHeight();
+    window.addEventListener('resize', updateNavHeight);
+
     function toggleReadMore(btn) {
       const content = btn.nextElementSibling;
       const isOpen = content.classList.contains('open');
