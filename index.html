@@ -87,6 +87,7 @@
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
       transition: background 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
     }
 
     /* NAV */
@@ -223,12 +224,12 @@
 
     .hero-desc {
       font-family: var(--serif);
-      font-size: 1.1rem;
+      font-size: 1.18rem;
       line-height: 1.7;
       color: rgba(232,224,208,0.75);
       font-style: italic;
-      margin-bottom: 2.8rem;
-      padding-bottom: 2.8rem;
+      margin-bottom: 1.6rem;
+      padding-bottom: 1.6rem;
       border-bottom: 0.5px solid rgba(232,224,208,0.1);
     }
     [data-theme="light"] .hero-desc { color: rgba(26,22,18,0.55); }
@@ -309,8 +310,8 @@
 
     .entry {
       max-width: 680px;
-      margin: 0 auto 3.5rem;
-      padding: 4.5rem 5rem;
+      margin: 0 auto;
+      padding: 5rem 5rem;
     }
     #memorias .entry:first-child {
       padding-top: 1.5rem;
@@ -505,7 +506,7 @@
         padding: 0 6% 8%;
       }
       .hero-desc {
-        font-size: 1rem;
+        font-size: 1.08rem;
         margin-bottom: 2rem;
         padding-bottom: 2rem;
       }
@@ -546,6 +547,52 @@
       .entries-header {
         padding: 1rem 4%;
       }
+          nav {
+        padding: 1.1rem 5%;
+      }
+      .nav-center {
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+      }
+      .hero-meta-label {
+        font-size: 0.55rem;
+      }
+      .submenu-item {
+        font-size: 0.8rem;
+        padding: 0.7rem 0.9rem;
+      }
+      .submenu-sep {
+        height: 11px;
+      }
+      .entry-author {
+        font-size: 1.15rem;
+      }
+      .entry-date {
+        font-size: 0.68rem;
+      }
+      .entry-footer {
+        gap: 1rem;
+      }
+      .entry-highlight {
+        font-size: 1.15rem;
+        padding: 1.2rem 1.8rem;
+      }
+      .poem-stanza {
+        font-size: 1.15rem !important;
+      }
+      .poem-closing {
+        font-size: 1.15rem !important;
+      }
+      .entry-title {
+        font-size: 1.15rem !important;
+      }
+      .read-more-btn {
+        font-size: 0.58rem;
+        padding: 0.55rem 1.1rem;
+      }
+      footer {
+        padding: 1.2rem 5%;
+      }
     }
 
     /* ── MOBILE ── */
@@ -580,7 +627,7 @@
         margin-bottom: 0.7rem;
       }
       .hero-desc {
-        font-size: 0.92rem;
+        font-size: 1rem;
         line-height: 1.65;
         margin-bottom: 1.8rem;
         padding-bottom: 1.8rem;
@@ -600,7 +647,7 @@
       }
       .entry {
         padding: 2.5rem 1.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
       }
       .entry-body {
         font-size: 1.05rem;
@@ -639,17 +686,22 @@
       .intro-simple p {
         font-size: 0.92rem;
         max-width: 100%;
-        text-align: left;
+        text-align: center;
       }
       .entries-header {
         padding: 0.8rem 5%;
       }
       .submenu {
-        padding: 0 5%;
+        padding: 0 3%;
+        flex-wrap: wrap;
+        overflow-x: visible;
       }
       .submenu-item {
-        font-size: 0.78rem;
-        padding: 0.65rem 0.8rem;
+        font-size: 0.72rem;
+        padding: 0.55rem 0.6rem;
+      }
+      .submenu-sep {
+        height: 10px;
       }
       .entry-footer {
         flex-wrap: nowrap;
@@ -657,20 +709,21 @@
       }
       .entry-handwritten {
         padding: 2.5rem 1.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
         max-width: 100%;
         width: 100%;
         box-sizing: border-box;
       }
       .entry-handwritten .svg-wrap {
         max-width: 100% !important;
-        width: 100% !important;
+        width: calc(100vw - 8% - 3rem) !important;
         margin-bottom: 1.5rem;
         display: block;
       }
       .entry-handwritten .svg-wrap svg {
         width: 100% !important;
         height: auto !important;
+        min-height: 120px;
         display: block;
       }
       .read-more-btn {
@@ -697,8 +750,8 @@
     }
     .entry-handwritten {
       max-width: 680px;
-      margin: 0 auto 3.5rem;
-      padding: 4.5rem 5rem;
+      margin: 0 auto;
+      padding: 5rem 5rem;
     }
     .entry-handwritten .svg-wrap,
     .entry-handwritten .entry-footer {
@@ -862,7 +915,7 @@
     <div class="entry-divider"></div>
 
     <div class="entry-handwritten" id="entry-diogo">
-      <div class="svg-wrap"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="0 0 2300.1 548">
+      <div class="svg-wrap"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" version="1.1" viewBox="100 10 2150 540">
   
   <defs>
     <style>
